@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-time Character Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f08080;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #f8c8dc;
+      padding: 20px;
+      border-radius: 10px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    }
+
+    textarea {
+      width: 90%;
+      height: 100px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #333;
+      resize: none;
+    }
+
+    .counter {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .counter span {
+      color: #4b0082;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Real-time Character Counter</h3>
+    <textarea id="textBox" maxlength="50" placeholder="Type something..."></textarea>
+    <div class="counter">
+      <p>Total Characters: <span id="totalCount">0</span></p>
+      <p>Remaining: <span id="remainingCount">50</span></p>
+    </div>
+  </div>
+
+  <script>
+    const textBox = document.getElementById("textBox");
+    const totalCount = document.getElementById("totalCount");
+    const remainingCount = document.getElementById("remainingCount");
+    const maxLength = 50;
+
+    textBox.addEventListener("input", () => {
+      let textLength = textBox.value.length;
+      totalCount.textContent = textLength;
+      remainingCount.textContent = maxLength - textLength;
+    });
+  </script>
+</body>
+</html>
